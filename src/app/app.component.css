@@ -109,6 +109,15 @@ td {
   border-radius: 0.25rem;
 }
 
+.btn-delete {
+  color: #f00;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
 /* modal */
 .modal-container {
   height: 100vh;

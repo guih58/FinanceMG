@@ -1,9 +1,9 @@
 export class Finance {
   constructor(
-    public objeto:Object = {
-
-    }
-    
+    public id:Number,
+    public title: string,
+    public type: string,
+    public value: number
    
   ) {
    

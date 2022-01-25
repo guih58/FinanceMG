@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { Finance } from './finance';
-
-
 
 @Component({
   selector: 'app-root',
@@ -10,35 +12,104 @@ import { Finance } from './finance';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  valuesFinance: Array<any>[] = [];
+  public valuesFinance: Finance[] = [];
+  public form: FormGroup;
 
-  finance = new FormGroup({
-    title: new FormControl(''),
-    type: new FormControl(''),
-    value: new FormControl(''),
-  });
-
-  load:any = localStorage.getItem("DB")
-  loader = JSON.parse(this.load)
-
-   
-
-
-
-  add(): void {
-    const finances = this.finance.value;
-    this.valuesFinance.push(finances);
-    this.save(this.valuesFinance);
-    this.finance.reset();
-    
-    
-    
-    
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      title: [
+        '',
+        Validators.compose([
+          Validators.minLength(3),
+          Validators.maxLength(60),
+          Validators.required,
+        ]),
+      ],
+      type: [],
+      value: [],
+    });
+    this.load();
   }
 
-  save(arrayValue: Array<any>[]) {
-    const setValueFinance = arrayValue;
-    localStorage.setItem('DB', JSON.stringify(new Object(setValueFinance)));
+  entrada() {
+    let transactions = this.valuesFinance;
+    let actionTreasaction = transactions.reduce((acc, transactions) => {
+      if (transactions.type === 'Entrada') {
+        return acc + transactions.value;
+      }
+      return acc;
+    }, 0);
+
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(actionTreasaction);
+  }
+
+  saida() {
+    let transactions = this.valuesFinance;
+    let actionTreasaction = transactions.reduce((acc, transactions) => {
+      if (transactions.type === 'Saida') {
+        return acc + transactions.value;
+      }
+      return acc;
+    }, 0);
+
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(actionTreasaction);
+  }
+
+  total() {
+    let transactions = this.valuesFinance;
+    let actionTreasaction = transactions.reduce((acc, transactions) => {
+      return acc + transactions.value;
+    }, 0);
+
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(actionTreasaction);
+  }
+
+  add(): void {
+    const id = this.valuesFinance.length + 1;
+    const title = this.form.controls['title'].value;
+    const type = this.form.controls['type'].value;
+    const values = this.form.controls['value'].value;
+
+    this.valuesFinance.push(new Finance(id, title, type, values));
+
+    this.save();
+    this.clear();
+  }
+
+  save() {
+    const data = JSON.stringify(this.valuesFinance);
+    localStorage.setItem('DB', data);
+  }
+
+  clear() {
+    this.form.reset();
+  }
+
+  load() {
+    const data: any = localStorage.getItem('DB');
+    this.valuesFinance = JSON.parse(data);
+    if (data) {
+      this.valuesFinance = JSON.parse(data);
+    } else {
+      this.valuesFinance = [];
+    }
+  }
+
+  remove(finance: Finance) {
+    const index = this.valuesFinance.indexOf(finance);
+    if (index != -1) {
+      this.valuesFinance.splice(index, 1);
+    }
+    this.save();
   }
 
   ativar = () => {
