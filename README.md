@@ -1,27 +1,19 @@
-# FinanceMG
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ <div>
+    <h1 align="center">FinanceMG</h1>
+  </div>
+    <h3 align="center">Desenvolvido em Angular, um desafio proposto para um vaga de estagio, onde o objetivo era criar um sistema caixa. <a href="https://finance-mg-776l915pe-guih58.vercel.app/">Acessar site</a>.</h3>
+  <div align="center" valign="top"><br>
+   <img align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/angularjs/angularjs-original.svg">
+  <img align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
+    <img align="center" alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+    <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+  </div><br>
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  <div align="center">
+      <img align="center" height="400em" src="https://github.com/guih58/FinanceMG/blob/master/Captura%20de%20Tela%202022-02-05%20a%CC%80s%2023.59.51.png?raw=true"/>
+  </div>
+  
